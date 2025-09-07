@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Выкуп авто — Дима Михайлюк</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Быстрый и честный выкуп авто. Оценка за 5 минут, сделка в день обращения. Пишите в WhatsApp или оставляйте заявку — Дима Михайлюк." />
+  <style>
+    :root{
+      --bg: #0b1220;
+      --fg: #0f172a;
+      --muted:#475569;
+      --muted-2:#64748b;
+      --card:#ffffff;
+      --border:#e2e8f0;
+      --accent:#0ea5e9;
+      --ok:#059669;
+      --err:#e11d48;
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      margin:0;padding:0;
+      background: radial-gradient(1200px 800px at 20% -10%, #1e293b 0%, #0b1220 60%) fixed;
+      color:#0f172a;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    a{color:inherit}
+    .container{max-width:1100px;margin:0 auto;padding:32px 16px 56px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#fff}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#0ea5e9,#60a5fa);color:#001B2E;display:grid;place-items:center;font-weight:800}
+    nav{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    nav a{color:#e2e8f0;text-decoration:none;font-size:14px}
+    nav a:hover{color:#fff}
+    .btn{background:#0ea5e9;color:#fff;border:none;padding:12px 16px;border-radius:12px;font-weight:700;cursor:pointer}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff}
+    .btn-wa{background:#25D366;color:#0B3D2E}
+    .hero{display:grid;grid-template-columns:1fr;gap:24px;margin-top:10px}
+    @media (min-width: 1024px){ .hero{grid-template-columns:1.1fr 0.9fr} }
+    .hero h1{color:#fff;margin:0;font-size: clamp(28px, 5vw, 48px);line-height:1.08;font-weight:900;letter-spacing:-.02em}
+    .hero .lead{color:#cbd5e1;margin-top:8px;font-size:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 8px 30px rgba(2,6,23,.15)}
+    .p-24{padding:24px}
+    .list{margin:0;padding:0 0 0 18px;color:#e2e8f0}
+    /* Тёмный текст именно внутри белых карточек */
+    .card .list{color:#334155}
+    .muted{color:var(--muted)}
+    .muted-2{color:var(--muted-2)}
+    .field{display:flex;flex-direction:column;gap:6px}
+    label{font-size:13px;color:var(--muted-2)}
+    input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);outline:none;background:#fff;font-size:16px}
+    input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px rgba(14,165,233,.15)}
+    .row{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:768px){ .row{grid-template-columns:1fr 1fr} }
+    .actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px}
+    .ok{color:var(--ok);font-size:14px}
+    .err{color:var(--err);font-size:14px}
+    .note{font-size:12px;color:var(--muted-2)}
+    .section{margin-top:28px}
+    .gallery{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff}
+    /* Грид галереи без подписей */
+    .grid-photos{display:grid;grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px}
+    .photo{position:relative;border:1px solid var(--border);border-radius:12px;overflow:hidden;aspect-ratio:4/3;background:#f1f5f9}
+    .photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease}
+    .photo:hover img{transform:scale(1.02)}
+    .reviews{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width: 900px){ .reviews{grid-template-columns:1fr 1fr 1fr} }
+    .review{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff}
+    .review .author{font-weight:700;margin-bottom:6px}
+    footer{margin-top:40px;color:#cbd5e1}
+    footer a{color:#cbd5e1;text-decoration:underline}
+    .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#e2e8f0;border-radius:999px;padding:6px 10px;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">DM</div>
+        <div style="font-weight:800; color:#fff">Дима Михайлюк · Выкуп авто</div>
+      </div>
+      <nav>
+        <a href="#form">Оставить заявку</a>
+        <a href="#photos">Фото</a>
+        <a href="#benefits">Преимущества</a>
+        <a href="#reviews">Отзывы</a>
+        <a class="btn btn-wa" href="https://wa.me/79052628888?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%BF%D1%80%D0%BE%D0%B4%D0%B0%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" href="tel:+79052628888">+7&nbsp;905&nbsp;262‑88‑88</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div>
+        <div class="badge">Оценка за 5 минут · Сделка в день обращения</div>
+        <h1>Выкуплю ваш автомобиль быстро и честно</h1>
+        <p class="lead">Без размещения в классифайдах, звонков и торга. Прозрачные условия, расчёт сразу.</p>
+
+        <div id="benefits" class="card p-24" style="margin-top:14px">
+          <div style="font-weight:700; margin-bottom:8px">Почему это удобно вам</div>
+          <ul class="list">
+            <li>Не нужно самому продавать и отвечать на звонки</li>
+            <li>Без фото, платных объявлений и торга</li>
+            <li>Выкуп до размещения в классифайдах</li>
+            <li>Юридически чистая сделка и договор</li>
+          </ul>
+        </div>
+      </div>
+
+      <section id="form" class="card p-24">
+        <form id="leadForm" novalidate>
+          <div class="row">
+            <div class="field">
+              <label>Имя</label>
+              <input id="name" placeholder="Ваше имя" autocomplete="name" />
+            </div>
+            <div class="field">
+              <label>Телефон</label>
+              <input id="phone" type="tel" placeholder="+7 ..." autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Год выпуска</label>
+              <input id="year" type="number" placeholder="2020" value="2020" />
+            </div>
+            <div class="field">
+              <label>Марка</label>
+              <select id="brand">
+                <option value="">Выберите марку</option>
+                <option>Nissan</option>
+                <option>Toyota</option>
+                <option>Volvo</option>
+                <option>Lexus</option>
+                <option>Mercedes</option>
+                <option>ford</option>
+                <option>Mazda</option>
+                <option>Mitsubishi</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Модель</label>
+              <select id="model">
+                <option value="">Сначала выберите марку</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>VIN (обязательно)</label>
+              <input id="vin" placeholder="JTNB11HK4030..." required autocapitalize="off" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Пробег, км</label>
+              <input id="mileage" type="number" placeholder="100000" />
+            </div>
+            <div class="field" style="display:grid; align-items:end">
+              <div class="note">
+                Нажимая «Отправить», вы соглашаетесь с <a href="privacy.html" target="_blank" rel="noopener">Политикой конфиденциальности</a>.
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="submitBtn" class="btn" type="submit">Отправить заявку</button>
+            <a class="btn btn-wa" href="https://wa.me/79052628888?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%BE%D1%86%D0%B5%D0%BD%D0%B8%D1%82%D1%8C%20%D0%B0%D0%B2%D1%82%D0%BE" target="_blank" rel="noopener">Написать в WhatsApp</a>
+            <div id="status"></div>
+          </div>
+        </form>
+      </section>
+    </section>
+
+    <section id="photos" class="section">
+      <h2 style="font-size:20px; font-weight:800; color:#fff; margin:10px 0">Фото</h2>
+      <!-- Галерея без названий -->
+      <div id="photosGrid" class="grid-photos" aria-live="polite"></div>
+      <!-- Фоллбек: стандартный вьюер Drive на случай, если список не подгрузится -->
+      <div id="photosFallback" class="gallery" style="margin-top:12px; display:none">
+        <iframe src="https://drive.google.com/embeddedfolderview?id=1770sjH94fOTB-iN93KX8UV56IhhDEfkb#grid" style="width:100%; height:380px; border:0;" loading="lazy"></iframe>
+      </div>
+      <div class="muted-2" style="margin-top:6px;color:#cbd5e1">Чтобы фото показывались всем, включите в папке Google Drive доступ «Любой, у кого есть ссылка → Просмотр».</div>
+    </section>
+
+    <section id="reviews" class="section">
+      <h2 style="font-size:20px; font-weight:800; color:#fff; margin:10px 0">Отзывы</h2>
+      <div class="reviews">
+        <div class="review">
+          <div class="author">Алексей</div>
+          <div class="muted">Продал RAV4 за день. Приехали, осмотрели, оформили и сразу перевели деньги. Рекомендую!</div>
+        </div>
+        <div class="review">
+          <div class="author">Марина</div>
+          <div class="muted">Нужно было быстро продать Lexus. Всё прозрачно, без торга и лишних вопросов. Спасибо!</div>
+        </div>
+        <div class="review">
+          <div class="author">Игорь</div>
+          <div class="muted">Честная оценка, документы подготовили, деньги сразу. Удобно и без нервов.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+        <div style="color:#cbd5e1">© <span id="yy"></span> Дима Михайлюк</div>
+        <div><a href="privacy.html" target="_blank" rel="noopener">Политика конфиденциальности</a></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // === КОНФИГ ===
+    const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbwX8HGlpdfWSFks8LutsmG9ItSdc54hZqWe4xxazz4s1kYlHGXsrIv1zg4VFms9l6OM/exec";
+    const PHOTOS_FOLDER  = "1770sjH94fOTB-iN93KX8UV56IhhDEfkb"; // ID папки с фото в Google Drive
+
+    // Дата в футере
+    document.getElementById('yy').textContent = new Date().getFullYear();
+
+    // Элементы
+    const $form   = document.getElementById('leadForm');
+    const $submit = document.getElementById('submitBtn');
+    const $status = document.getElementById('status');
+    const $vin    = document.getElementById('vin');
+    const $brand  = document.getElementById('brand');
+    const $model  = document.getElementById('model');
+    const $year   = document.getElementById('year');
+
+    // Бренды/модели (с учётом вашего списка: включая нижний регистр 'ford')
+    const MODELS = {
+      "Nissan": ["Murano","X-Trail","Qashqai","Juke","Terrano"],
+      "Toyota": ["Camry","Corolla","RAV4","Land Cruiser 200","Land Cruiser 300"],
+      "Volvo":  ["XC60","XC90","S60","V60"],
+      "Lexus":  ["RX","NX","ES","GX"],
+      "Mercedes": ["C-Class","E-Class","GLC","GLE","S-Class","GLA","GLB","GLS"],
+      "ford":     ["Focus","Kuga","Explorer","Mondeo","Fiesta","Puma","Ranger"],
+      "Mazda":    ["3","6","CX-5","CX-9","CX-30","CX-7"],
+      "Mitsubishi":["Outlander","ASX","Pajero Sport","L200","Eclipse Cross"]
+    };
+
+    // Утилиты
+    function setStatus(kind, msg){
+      $status.className = kind === "ok" ? "ok" : (kind === "err" ? "err" : "muted");
+      $status.textContent = msg || "";
+    }
+    function buildQuery(obj){
+      return Object.entries(obj)
+        .map(([k,v])=> encodeURIComponent(k) + "=" + encodeURIComponent(v==null?"":v))
+        .join("&");
+    }
+
+    // VIN верхним регистром
+    $vin.addEventListener('input', ()=>{ $vin.value = $vin.value.toUpperCase().replace(/\s+/g,''); });
+
+    // Макс. год
+    $year.max = String(new Date().getFullYear());
+
+    // Динамика моделей
+    $brand.addEventListener("change", () => {
+      const models = MODELS[$brand.value] || [];
+      $model.innerHTML = "";
+      const ph = document.createElement("option");
+      ph.value = ""; ph.textContent = $brand.value ? "Выберите модель" : "Сначала выберите марку";
+      $model.appendChild(ph);
+      for(const m of models){
+        const opt = document.createElement("option");
+        opt.value = m; opt.textContent = m;
+        $model.appendChild(opt);
+      }
+    });
+
+    // Отправка (JSONP, без дублей)
+    let sending = false;
+    $form.addEventListener('submit',(e)=>{
+      e.preventDefault();
+      if(sending) return;
+      setStatus('', '');
+
+      const name    = document.getElementById('name').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const year    = ($year.value||'').trim();
+      const brand   = ($brand.value||'').trim();
+      const model   = ($model.value||'').trim();
+      const vin     = ($vin.value||'').trim();
+      const mileage = (document.getElementById('mileage').value||'').trim();
+
+      if(!vin){ setStatus('err','Укажите VIN.'); return; }
+
+      sending = true;
+      $submit.disabled = true;
+      setStatus('muted','Отправляю...');
+
+      const cbName = "__LEAD_CB_" + Date.now();
+      window[cbName] = function(resp){
+        try{
+          if(resp && resp.ok && resp.sent){
+            setStatus('ok','Спасибо! Ваша заявка отправлена. Я свяжусь с вами.');
+            $form.reset();
+            // сброс моделей
+            $model.innerHTML = ""; const ph = document.createElement('option'); ph.value=""; ph.textContent="Сначала выберите марку"; $model.appendChild(ph);
+          }else{
+            setStatus('err','Ошибка сервера. Попробуйте ещё раз или напишите в WhatsApp.');
+          }
+        }catch(err){
+          setStatus('err','Не удалось обработать ответ сервера.');
+        }finally{
+          cleanup();
+        }
+      };
+
+      const payload = {
+        cb: cbName,
+        vin, name, phone, year, brand, model, mileage,
+        utm: location.search.slice(1),
+        page: location.href,
+        ts: String(Date.now())
+      };
+      const s = document.createElement('script');
+      s.src = SUBMIT_ENDPOINT + "?" + buildQuery(payload);
+      s.async = true;
+      s.onerror = ()=>{ setStatus('err','Нет соединения с сервером. Попробуйте позже.'); cleanup(); };
+      document.body.appendChild(s);
+
+      const timer = setTimeout(()=>{ setStatus('err','Превышено время ожидания сервера.'); cleanup(); }, 15000);
+
+      function cleanup(){
+        sending = false;
+        $submit.disabled = false;
+        try{ delete window[cbName]; }catch{}
+        if(s && s.parentNode){ s.parentNode.removeChild(s); }
+        clearTimeout(timer);
+      }
+    });
+
+    // === Галерея фото без подписей (через Apps Script) ===
+    function loadPhotos(){
+      const grid = document.getElementById('photosGrid');
+      const fallback = document.getElementById('photosFallback');
+      const cbName = "__PHOTOS_CB_" + Date.now();
+      window[cbName] = function(resp){
+        try{
+          if(resp && resp.ok && Array.isArray(resp.images) && resp.images.length){
+            grid.innerHTML = "";
+            resp.images.forEach(it=>{
+              const id = it.id;
+              const url = "https://drive.google.com/uc?export=view&id=" + encodeURIComponent(id);
+              const wrap = document.createElement('div');
+              wrap.className = 'photo';
+              const img = new Image();
+              img.loading = 'lazy';
+              img.decoding = 'async';
+              img.src = url;
+              img.alt = '';
+              wrap.appendChild(img);
+              grid.appendChild(wrap);
+            });
+            fallback.style.display = 'none';
+          }else{
+            fallback.style.display = 'block';
+          }
+        }finally{
+          cleanup();
+        }
+      };
+      const s = document.createElement('script');
+      s.src = SUBMIT_ENDPOINT + "?" + buildQuery({ cb: cbName, action:'photos', folder: PHOTOS_FOLDER, ts: Date.now() });
+      s.async = true;
+      s.onerror = ()=>{ fallback.style.display='block'; cleanup(); };
+      document.body.appendChild(s);
+
+      function cleanup(){
+        try{ delete window[cbName]; }catch{}
+        if(s && s.parentNode){ s.parentNode.removeChild(s); }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', loadPhotos);
+  </script>
+</body>
+</html>
